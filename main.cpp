@@ -3,6 +3,7 @@
 
 int main(int argc, char *argv[])
 {
+    // krissi
     QApplication a(argc, argv);
     MainWindow w;
     w.show();
