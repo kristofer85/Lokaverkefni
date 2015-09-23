@@ -222,3 +222,50 @@ void UiProto::on_minDisparitySlider_valueChanged(int value)
             minDisparity = value;
             ui->minDisparityValue->setText(QString::number(value));
 }
+
+void UiProto::on_btnHistogram_clicked()
+{
+
+    equalizeHist( matGrayscaleL,  matGrayscaleL );
+    equalizeHist( matGrayscaleR,  matGrayscaleR );
+    QImage QorginalR = matToQImage(matGrayscaleR);         // convert original and Canny images to QImage
+    ui->picR->setPixmap(QPixmap::fromImage(QorginalR));   // show original and Canny images on labels
+    QImage QorginalL = matToQImage(matGrayscaleL);         // convert original and Canny images to QImage
+    ui->picL->setPixmap(QPixmap::fromImage(QorginalL));   // show original and Canny images on labels
+    /*
+    QImage QorginalR = matToQImage(matGrayscaleR);         // convert original and Canny images to QImage
+    ui->picR->setPixmap(QPixmap::fromImage(QorginalR));   // show original and Canny images on labels
+    QImage QorginalL = matToQImage(matGrayscaleL);         // convert original and Canny images to QImage
+    ui->picL->setPixmap(QPixmap::fromImage(QorginalL));   // show original and Canny images on labels
+    */
+}
+
+void UiProto::on_pushButton_4_clicked()
+{
+    int SW = 3;
+    StereoSGBM sgbm;
+    /*
+    sgbm(g3, g4, disp2);
+    normalize(disp2, disp8, 0, 255, CV_MINMAX, CV_8U);
+    imshow("disp", disp2);
+    */
+
+    cv::waitKey(0);
+    int cn = orginalL.channels();
+    sgbm.SADWindowSize = SW;
+    sgbm.numberOfDisparities = orginalL.size().width/8;
+    sgbm.preFilterCap = 63;
+    sgbm.minDisparity = 0;
+    sgbm.uniquenessRatio = 2;
+    sgbm.speckleWindowSize = 150;
+    sgbm.speckleRange = 2;
+    sgbm.disp12MaxDiff = 2;
+    sgbm.fullDP = true;
+    //sgbm.P1 = 600;
+    //sgbm.P2 = 2400;
+    sgbm.P1 = 8*cn*SW*SW;
+    sgbm.P2 = 32*cn*SW*SW;
+
+    sgbm(matGrayscaleL, matGrayscaleR, disp);
+    normalize(disp2, disp8, 0, 255, CV_MINMAX, CV_8U);
+}

@@ -62,6 +62,10 @@ private slots:
 
     void on_minDisparitySlider_valueChanged(int value);
 
+    void on_btnHistogram_clicked();
+
+    void on_pushButton_4_clicked();
+
 private:
     Ui::UiProto *ui;
     int SADWindowSize;
