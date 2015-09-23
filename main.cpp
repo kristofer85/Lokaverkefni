@@ -1,13 +1,17 @@
-#include "mainwindow.h"
+#include "uiproto.h"
 #include <QApplication>
-#include <opencv2/calib3d/calib3d.hpp>
-#include <opencv2/core/core.hpp>
 
-#include "opencv2/highgui/highgui.hpp"
 #include "disparity.h"
 #include "reprojectimageto3d.h"
 int main(int argc, char *argv[])
 {
+    QApplication a(argc, argv);
+    UiProto w;
+    w.show();
+
+    return a.exec();
+
+    /*
     Mat depth;
     Disparity disparity("C:/!!Haust2015/Lokaverkefni/myndir/Left_stytta.png","C:/!!Haust2015/Lokaverkefni/myndir/right_stytta.png");
     depth = disparity.semiGlobalBlockMatching();
@@ -56,4 +60,5 @@ int main(int argc, char *argv[])
     reprojectImageTo3d.save(image3D, "c:/custom.xyz");
     reprojectImageTo3d.save(image3D, "c:/opencv.xyz");
     return 0;
+    */
 }
