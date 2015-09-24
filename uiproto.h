@@ -11,6 +11,7 @@
 #include <QMainWindow>
 #include<QFileDialog>
 #include<QtCore>
+
 using namespace cv;
 namespace Ui {
 class UiProto;
@@ -66,6 +67,8 @@ private slots:
 
     void on_pushButton_4_clicked();
 
+    void on_btnSterio_clicked();
+
 private:
     Ui::UiProto *ui;
     int SADWindowSize;
@@ -84,7 +87,12 @@ private:
     //P1 = 8*cn*SW*SW;
     int P2;
     //P2 = 32*cn*SW*SW;
-     QImage UiProto::matToQImage(cv::Mat mat);
+
+    //test alternate way to matToQImage
+    String fileLeft;
+    String fileRight;
+
+    QImage matToQImage(Mat mat);
 };
 
 #endif // UIPROTO_H

@@ -91,6 +91,7 @@ QImage UiProto::matToQImage(cv::Mat mat) {
     }
     return QImage();        // return a blank QImage if the above did not work
 }
+
 void UiProto::on_pushButton_8_clicked()
 {
     QString strFileName = QFileDialog::getOpenFileName();       // bring up open file dialog
@@ -241,6 +242,11 @@ void UiProto::on_btnHistogram_clicked()
 }
 
 void UiProto::on_pushButton_4_clicked()
+{
+
+}
+
+void UiProto::on_btnSterio_clicked()
 {
     int SW = 3;
     StereoSGBM sgbm;

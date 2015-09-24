@@ -114,7 +114,7 @@
      <string>undistort images</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_4">
+   <widget class="QPushButton" name="btnSterio">
     <property name="geometry">
      <rect>
       <x>830</x>
